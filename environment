@@ -52,7 +52,7 @@ if [ "$DNANEXUS_HOME" = "/etc/profile.d" ]; then
   ARGCOMPLETE_REGISTER_PATH="/usr/bin/register-python-argcomplete"
   export DNANEXUS_HOME="/usr/share/dnanexus"
   # Private Python packages. We really ought not pollute PYTHONPATH with these though.
-#  export PYTHONPATH="/usr/share/dnanexus/lib/${PYTHON_VERSION}/site-packages:$PYTHONPATH"
+  export PYTHONPATH="/usr/share/dnanexus/lib/${PYTHON_VERSION}/site-packages:$PYTHONPATH"
   export CLASSPATH="/usr/share/java/dnanexus-api-0.1.0.jar:${CLASSPATH}"
 
 else
@@ -96,3 +96,4 @@ fi
 if [[ -z "$DX_SECURITY_CONTEXT" && -n "$DX_AUTH_TOKEN" ]]; then
     export DX_SECURITY_CONTEXT="{\"auth_token_type\":\"Bearer\",\"auth_token\":\"$DX_AUTH_TOKEN\"}"
 fi
+unset PYTHONPATH
